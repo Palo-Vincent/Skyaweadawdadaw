@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sky Studio — 3D Game Asset Artist</title>
+<meta name="description" content="Sky Studio: 3D game asset artist yang berspesialisasi dalam aset 3D Minecraft & Roblox.">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#14161b;
+  --bg-alt:#1e2229;
+  --line:#2c333d;
+  --text:#f4f6f8;
+  --muted:#a9b3bf;
+  --hair:#1f3a45;
+  --eye:#5fa03e;
+  --skin:#d9a98d;
+  --display:'Jost','Trebuchet MS',sans-serif;
+  --body:'Nunito','Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.7;font-size:17px}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--eye);outline-offset:3px}
+
+/* Navbar */
+nav{position:sticky;top:0;z-index:10;background:rgba(20,22,27,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1200px;margin:auto;padding:10px 24px;display:flex;align-items:center;gap:14px}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:.06em}
+.logo{width:40px;height:40px;image-rendering:pixelated;background:var(--hair);border-radius:4px;object-fit:cover}
+.links{margin-left:auto;display:flex;gap:26px;font-weight:600;font-size:15px}
+.links a{text-decoration:none;color:var(--muted);transition:color .2s}
+.links a:hover{color:var(--text)}
+
+/* Hero */
+.wrap{max-width:1200px;margin:auto;padding:0 24px}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:32px;min-height:560px;padding:56px 0}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(3.4rem,9vw,7rem);line-height:1;letter-spacing:-.01em;margin-bottom:26px}
+.role{font-family:var(--display);font-weight:700;font-size:clamp(1.5rem,3vw,2.1rem);margin-bottom:14px}
+.tag{color:var(--muted);font-weight:600;margin-bottom:30px}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 26px;font-family:var(--display);font-weight:700;text-decoration:none;border:2px solid var(--text);transition:transform .15s,background .2s,color .2s}
+.btn.solid{background:var(--text);color:var(--bg)}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--eye)}
+.hero-art{display:flex;justify-content:center}
+.hero-art img{width:min(420px,100%);image-rendering:pixelated}
+.ph{width:min(360px,100%);aspect-ratio:3/4;display:grid;place-items:center;text-align:center;padding:24px;color:var(--muted);font-size:14px;border:2px dashed var(--line);background:var(--bg-alt)}
+
+/* Sections */
+section.block{padding:88px 0}
+section.alt{background:var(--bg-alt)}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(2rem,4vw,2.9rem);margin-bottom:28px}
+.about{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.about img,.about .ph{width:100%;max-width:440px;margin:auto;image-rendering:pixelated}
+.lang{font-family:var(--display);font-weight:700;font-size:1.15rem;margin:22px 0 6px}
+.about p{color:#dfe5ea;max-width:62ch;margin-bottom:10px}
+
+/* Layanan */
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.svc{padding:28px;border:2px solid var(--line);background:var(--bg)}
+.svc h3{font-family:var(--display);font-size:1.3rem;margin-bottom:8px}
+.svc p{color:var(--muted);font-size:16px}
+.svc:nth-child(1){border-top-color:var(--eye)}
+.svc:nth-child(2){border-top-color:var(--skin)}
+.svc:nth-child(3){border-top-color:#4c7f94}
+
+/* Portofolio */
+.filters{display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap}
+.filters button{font:600 15px var(--body);padding:8px 18px;background:transparent;color:var(--muted);border:2px solid var(--line);cursor:pointer;transition:all .2s}
+.filters button[aria-pressed="true"]{background:var(--text);color:var(--bg);border-color:var(--text)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:var(--bg-alt);border:2px solid var(--line);overflow:hidden}
+.card .thumb{aspect-ratio:4/3;background:var(--hair);display:grid;place-items:center;overflow:hidden}
+.card .thumb img{width:100%;height:100%;object-fit:cover;image-rendering:pixelated}
+.card .thumb span{color:#7f95a0;font-size:14px;padding:12px;text-align:center}
+.card .info{padding:16px 18px}
+.card h3{font-family:var(--display);font-size:1.15rem}
+.card p{color:var(--muted);font-size:14px}
+.card[hidden]{display:none}
+
+/* Kontak */
+.contact{text-align:center}
+.contact p{color:var(--muted);max-width:52ch;margin:0 auto 28px}
+footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:var(--muted);font-size:14px}
+
+@media (max-width:1024px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .about{gap:36px}
+}
+@media (max-width:860px){
+  .hero,.about{grid-template-columns:1fr}
+  .hero{min-height:0;padding:40px 0;text-align:center}
+  .hero .btns{justify-content:center}
+  .hero-art{order:-1}
+  .hero-art img,.ph{width:min(280px,70%)}
+  .services{grid-template-columns:1fr}
+  .about h2{text-align:center}
+  section.block{padding:64px 0}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .nav-in{padding:8px 16px;gap:10px}
+  .brand{font-size:17px;gap:10px}
+  .logo{width:34px;height:34px}
+  .links{gap:12px;font-size:13px}
+  .wrap{padding:0 16px}
+  .grid{grid-template-columns:1fr}
+  .btns{flex-direction:column}
+  .btn{text-align:center}
+  .filters{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch}
+  .filters button{flex:0 0 auto}
+}
+@media (max-width:400px){
+  .brand span{display:none}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a class="brand" href="#top">
+      <img class="logo" src="assets/logo.png" alt="" onerror="this.style.visibility='hidden'">
+      <span>Sky Studio</span>
+    </a>
+    <div class="links">
+      <a href="#about">Tentang</a>
+      <a href="#layanan">Layanan</a>
+      <a href="#karya">Karya</a>
+      <a href="#kontak">Kontak</a>
+    </div>
+  </div>
+</nav>
+
+<header id="top" class="wrap hero">
+  <div>
+    <h1>Sky Studio</h1>
+    <p class="role">3D Game Asset Artist</p>
+    <p class="tag">Specializes in Minecraft &amp; Roblox 3D Assets</p>
+    <div class="btns">
+      <a class="btn solid" href="#karya">Lihat karya</a>
+      <a class="btn" href="#kontak">Pesan aset</a>
+    </div>
+  </div>
+  <div class="hero-art">
+    <img src="assets/hero.png" alt="Karakter Sky Studio bergaya piksel" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph',textContent:'Taruh gambar karakter di assets/hero.png'}))">
+  </div>
+</header>
+
+<section id="about" class="block alt">
+  <div class="wrap about">
+    <img src="assets/about.png" alt="Karakter Sky Studio" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph',textContent:'Taruh gambar di assets/about.png'}))">
+    <div>
+      <h2>About Me</h2>
+      <p class="lang">English:</p>
+      <p>I am a 3D game asset artist with a passion for creating stylized, vibrant-themed weapons for Minecraft and Roblox.</p>
+      <p>I specialize in 3D modeling, texturing, and creating immersive visual effects for gameplay.</p>
+      <p class="lang">Indonesia:</p>
+      <p>Saya seniman aset game 3D yang senang membuat senjata bergaya stylized dengan tema warna cerah untuk Minecraft dan Roblox.</p>
+      <p>Saya mengerjakan pemodelan 3D, texturing, dan efek visual yang membuat gameplay terasa lebih hidup.</p>
+    </div>
+  </div>
+</section>
+
+<section id="layanan" class="block">
+  <div class="wrap">
+    <h2>Layanan</h2>
+    <div class="services">
+      <div class="svc"><h3>Weapon</h3><p>Model 3D dan tekstur senjata bergaya stylized untuk Minecraft dan Roblox.</p></div>
+      <div class="svc"><h3>VFX</h3><p>Efek visual untuk serangan dan skill supaya gameplay terasa lebih seru.</p></div>
+      <div class="svc"><h3>Cosmetic</h3><p>Item kosmetik seperti aksesori dan pelengkap karakter sesuai tema game Anda.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="karya" class="block alt">
+  <div class="wrap">
+    <h2>Karya</h2>
+    <div class="filters" role="group" aria-label="Filter karya">
+      <button aria-pressed="true" data-f="all">Semua</button>
+      <button aria-pressed="false" data-f="weapon">Weapon</button>
+      <button aria-pressed="false" data-f="vfx">VFX</button>
+      <button aria-pressed="false" data-f="cosmetic">Cosmetic</button>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section id="kontak" class="block">
+  <div class="wrap contact">
+    <h2>Kontak</h2>
+    <p>Butuh aset 3D untuk game Anda? Kirim pesan dan ceritakan tema serta jumlah item yang Anda inginkan.</p>
+    <div class="btns" style="justify-content:center">
+      <a class="btn solid" href="mailto:email@kamu.com">Kirim email</a>
+      <a class="btn" href="https://discord.com" target="_blank" rel="noopener">Discord</a>
+    </div>
+  </div>
+</section>
+
+<footer>© <span id="yr"></span> Sky Studio. All rights reserved.</footer>
+
+<script>
+/* Ganti daftar ini dengan karya Anda. Simpan gambar di folder assets/ */
+const works = [
+  // type harus salah satu: "weapon", "vfx", atau "cosmetic"
+  {title:"Nama Karya 1", type:"weapon",   desc:"Weapon · Minecraft", img:"assets/karya-1.png"},
+  {title:"Nama Karya 2", type:"weapon",   desc:"Weapon · Roblox",    img:"assets/karya-2.png"},
+  {title:"Nama Karya 3", type:"vfx",      desc:"VFX · Roblox",       img:"assets/karya-3.png"},
+  {title:"Nama Karya 4", type:"vfx",      desc:"VFX · Minecraft",    img:"assets/karya-4.png"},
+  {title:"Nama Karya 5", type:"cosmetic", desc:"Cosmetic · Roblox",  img:"assets/karya-5.png"},
+  {title:"Nama Karya 6", type:"cosmetic", desc:"Cosmetic · Minecraft", img:"assets/karya-6.png"}
+];
+
+const grid = document.getElementById('grid');
+works.forEach(w => {
+  const c = document.createElement('article');
+  c.className = 'card';
+  c.dataset.type = w.type;
+  c.innerHTML = `<div class="thumb"><img src="${w.img}" alt="${w.title}"></div>
+    <div class="info"><h3>${w.title}</h3><p>${w.desc}</p></div>`;
+  c.querySelector('img').onerror = e => {
+    e.target.replaceWith(Object.assign(document.createElement('span'), {textContent: 'Taruh gambar di ' + w.img}));
+  };
+  grid.appendChild(c);
+});
+
+document.querySelectorAll('.filters button').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.filters button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    grid.querySelectorAll('.card').forEach(c => {
+      c.hidden = b.dataset.f !== 'all' && c.dataset.type !== b.dataset.f;
+    });
+  });
+});
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
